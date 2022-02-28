@@ -14,7 +14,16 @@ function parseThumbnailToImageItem(data, alt) {
     return;
 }
 function parseEmojiToImageItem(data) {
-    return parseThumbnailToImageItem(data.emoji.image.thumbnails, data.emoji.shortcuts.shift());
+    // XXX DOM 
+    console.log("****************");
+    console.log(data.emoji);
+    console.log("****************");
+    if ("shortcuts" in data.emoji) {
+        return parseThumbnailToImageItem(data.emoji.image.thumbnails, data.emoji.shortcuts.shift());
+    }
+    else {
+        return;
+    }
 }
 function parseMessages(runs) {
     return runs.map((run) => {
@@ -102,3 +111,4 @@ function parseData(data) {
 }
 exports.parseData = parseData;
 //# sourceMappingURL=parser.js.map
+
