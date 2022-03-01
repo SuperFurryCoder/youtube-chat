@@ -14,12 +14,14 @@ function parseThumbnailToImageItem(data, alt) {
     return;
 }
 function parseEmojiToImageItem(data) {
-    // XXX DOM 
-    console.log("****************");
-    console.log(data.emoji);
-    console.log("****************");
-    if ("shortcuts" in data.emoji) {
-        return parseThumbnailToImageItem(data.emoji.image.thumbnails, data.emoji.shortcuts.shift());
+    if (data.hasOwnProperty('emoji')) {
+        if (data.emoji.hasOwnProperty('image')) {
+            if (data.emoji.image.hasOwnProperty('thumbnails')) {
+                if (data.emoji.hasOwnProperty('shortcuts')) {
+                    return parseThumbnailToImageItem(data.emoji.image.thumbnails, data.emoji.shortcuts.shift());
+                }
+            }
+        }
     }
     else {
         return;
