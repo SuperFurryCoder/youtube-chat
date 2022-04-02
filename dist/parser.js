@@ -18,6 +18,7 @@ function parseEmojiToImageItem(data) {
         if (data.emoji.hasOwnProperty('image')) {
             if (data.emoji.image.hasOwnProperty('thumbnails')) {
                 if (data.emoji.hasOwnProperty('shortcuts')) {
+                    console.log(data.emoji);
                     return parseThumbnailToImageItem(data.emoji.image.thumbnails, data.emoji.shortcuts.shift());
                 }
             }
